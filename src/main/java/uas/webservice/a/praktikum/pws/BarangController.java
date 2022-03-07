@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import uas.webservice.a.praktikum.pws.Barang;
@@ -34,29 +35,35 @@ public class BarangController {
     @Autowired
     private BarangRepo barang;
     
+//  
     @GetMapping("/barang")
     public List<Barang> getAllbarang(){
         return barang.findAll();
     }
     
+//    Find barang dari Id(KodeBarang)
     @GetMapping("/barang/{KodeBarang}")
     public Barang getbarangById(@PathVariable String KodeBarang){
         return barang.findById(KodeBarang).get();
     }
     
+//    Untuk save data
     @PostMapping ("/barang")
     public Barang savebarangDetails(@RequestBody Barang i){
         return barang.save(i);
     }
     
+//    Untuk edit data
     @PutMapping("/barang")
     public Barang updatebarang(@RequestBody Barang i){
         return barang.save(i);
     }
     
+//    Untuk mengubah data
     @DeleteMapping("/barang/{KodeBarang}")
     public ResponseEntity<HttpStatus> deletebarangById(@PathVariable String KodeBarang){
         barang.deleteById(KodeBarang);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
+    

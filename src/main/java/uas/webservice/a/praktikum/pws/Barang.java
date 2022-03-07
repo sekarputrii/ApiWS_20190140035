@@ -27,4 +27,5 @@ public class Barang {
     private String nama_barang;
     private int harga_barang;
     private int stock_barang;
+    private String agensi;
 }
